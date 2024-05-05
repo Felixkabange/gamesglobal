@@ -10,7 +10,7 @@ SECRET_KEY = "django-insecure-9vgo-clgkrg_hm6tjn85@h8_t-kjwl4b(z9wxzp0pwjkex&vw2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.91.150.70', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -61,12 +61,8 @@ WSGI_APPLICATION = "gamesglobal.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'showzy_db',
-        'USER': 'felix',
-        'PASSWORD': 'fellykabange13',
-        'HOST': '3.91.150.70',  # Changed to your public IP address
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
