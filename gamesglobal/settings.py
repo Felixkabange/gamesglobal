@@ -65,10 +65,11 @@ DATABASES = {
         'NAME': 'showzy_db',
         'USER': 'felix',
         'PASSWORD': 'fellykabange13',
-        'HOST': 'db',  # Set to the name of the service in docker-compose.yml
+        'HOST': '3.91.150.70',  # Changed to your public IP address
         'PORT': 5432,
     }
 }
+
 
 
 # Password validation
