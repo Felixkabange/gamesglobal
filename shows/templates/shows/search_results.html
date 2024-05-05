@@ -1,0 +1,13 @@
+{% extends "shows/layout.html" %}
+{% block body %}
+<h2>Search Results</h2>
+<div class="list-group">
+    {% for show in shows %}
+        <a href="{% url 'show_details' show.id %}" class="list-group-item list-group-item-action">
+            {{ show.title }}
+        </a>
+    {% empty %}
+        <p>No shows found matching your criteria.</p>
+    {% endfor %}
+</div>
+{% endblock %}

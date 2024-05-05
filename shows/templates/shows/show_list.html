@@ -1,0 +1,42 @@
+{% extends "shows/layout.html" %}
+{% load shows_tags %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<h1>Showzy</h1>
+
+<div class="container mt-4">
+    {% for show in shows %}
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-2">
+            <img src="{{ show.icon }}" alt="{{ show.title }} Poster" class="img-fluid">
+        </div>
+        <div class="col-md-10">
+            <h2>{{ show.title }}</h2>
+            <p>{{ show.description }}</p>
+            {% if show.id in watched_shows %}
+                <p>You have watched this show.</p>
+            {% else %}
+                <p>You have not watched this show.</p>
+            {% endif %}
+
+            {% with next_episode=next_episodes|get_item:show.id %}
+            {% if next_episode %}
+                <a href="{% url 'mark_episode_watched' next_episode.id %}">Watch next episode: {{ next_episode.title }}</a>
+            {% endif %}
+        {% endwith %}
+
+            <a href="{% url 'add' %}" class="btn btn-danger">Add Show</a>
+
+            <form action="{% url 'remove' show.id %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Remove Show</button>
+            </form>
+        </div>
+    </div>
+    {% empty %}
+        <p>No shows available.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,53 @@
+{% extends "shows/layout.html" %}
+{% block title %}{{ show.title }}{% endblock %}
+{% block body %}
+<div class="container mt-4">
+    <h1>{{ show.title }}</h1>
+    <img src="{{ show.icon }}" alt="Poster for {{ show.title }}" class="img-fluid">
+    <p>{{ show.description }}</p>
+    <h3>Episodes:</h3>
+    <ul>
+        {% for episode in episodes %}
+        <li id="episode-{{ episode.id }}">
+            {{ episode.title }} - Season {{ episode.season_number }}, Episode {{ episode.episode_number }}
+            {% if not episode.watched %}
+            <button type="button" class="btn btn-success mark-watched" data-episode-id="{{ episode.id }}">
+                Mark as Watched
+            </button>
+            {% else %}
+            <span>Watched</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'shows' %}" class="btn btn-primary">Back to Shows</a>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+document.querySelectorAll('.mark-watched').forEach(button => {
+    button.addEventListener('click', function() {
+        const episodeId = this.getAttribute('data-episode-id');
+        fetch("{% url 'mark_episode_watched' 9999 %}".replace('9999', episodeId), {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ episode_id: episodeId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                this.remove(); // Remove the button if successfully marked as watched
+                document.querySelector('#episode-' + episodeId).innerHTML += '<span>Watched</span>';
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+</script>
+{% endblock %}
+
+
+

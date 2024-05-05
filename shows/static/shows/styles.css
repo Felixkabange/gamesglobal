@@ -1,0 +1,85 @@
+.navbar {
+    background-color: white !important;
+    font-size: 40px;
+    border: none; /* Removes the border */
+  }
+  
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #183568 !important; /* White text */
+  }
+  /* Change the color for active and hover states as well */
+  .navbar-nav .nav-link.active,
+  .navbar-nav .nav-link:focus,
+  .navbar-nav .nav-link:hover {
+    color: #A8DADC !important; /* Slightly lighter blue for hover and active states */
+  }
+
+  .custom-navbar {
+    position: fixed; /* or `sticky` depending on your needs */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030; /* Higher than most other elements */
+    background-color: #fff; /* Ensure it has a background color if transparent */
+}
+  .navbar-brand, .nav-link {
+    color: #183568 !important; /* Dark blue links */
+    font-size: 1.1rem; /* Slightly larger font */
+    padding-right: 15px; /* Add space to the right */
+  }
+  .navbar-text {
+    margin-left: auto; /* Push to the far right */
+  }
+
+  .navbar-icon {
+    height: 20px; /* Adjust the size as needed */
+    width: auto;
+    margin-right: 8px; /* Space between icon and text */
+    vertical-align: middle; /* Align icon with text */
+  }
+
+
+  /* Styles for paragraphs */
+p {
+    padding: 15px;
+    line-height: 2.6;
+    text-align: center;
+    font-size: 18px;
+    
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+    text-align: center;
+    margin: 20px 0;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.img-fluid {
+    max-height: 150px;  /* Limit the height of posters to keep them uniform */
+}
+
+.row.mb-3 {
+    border-bottom: 1px solid #ccc; /* Adds a subtle line between show entries */
+    padding-bottom: 10px; /* Adds spacing below each show entry */
+}
+
+@media (max-width: 768px) {
+  .navbar {
+      font-size: 20px; /* Smaller font size on mobile */
+  }
+  h1, h2, h3, h4, h5, h6 {
+      font-size: 24px; /* Adjust heading sizes for mobile */
+      margin-top: 40px;
+      margin-bottom: 40px;
+  }
+  p {
+      font-size: 16px; /* Smaller paragraph text */
+      line-height: 1.8; /* Tighter line height for mobile readability */
+      padding: 10px;
+  }
+}
+
+  

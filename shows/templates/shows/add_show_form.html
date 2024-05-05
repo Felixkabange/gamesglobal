@@ -1,0 +1,15 @@
+{% extends "shows/layout.html" %}
+{% block title %}Add Show{% endblock %}
+{% block body %}
+<div class="container">
+    <h1>Add a New Show</h1>
+    <form action="{% url 'add' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Show Title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Show</button>
+    </form>
+</div>
+{% endblock %}
